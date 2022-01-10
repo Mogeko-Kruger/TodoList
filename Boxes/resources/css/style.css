@@ -2,14 +2,14 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     color: green;
-    margin-top: 15px;
+    font-size: 1.5em;
+    margin-top: 10vh;
 }
 
 .container {
@@ -20,12 +20,13 @@
     padding-right: 10px;
     color: #333;
     height: 90vh;
-    margin-top: 5vh;
+    margin-top: 3vh;
     margin-bottom: 5vh;
 }
 
-.todo-list:empty {
+.todolist {
     display: flex;
+    flex-direction: column;   
 }
 
 .empty-state {
@@ -33,18 +34,101 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
+    display: none;
+}
+
+.todolist:empty + .empty-state {
+    display: flex;
 }
 
 .checklist-icon {
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 60px;
 }
 
-.empty-state_title {
-    font-size: 1.2em;
+.empty-state_title {    
     margin-bottom: 5px;
 }
 
-.empty-state_description {
-    font-size: 0.8em;
+.removal {
+    display: none;
+}
+/* form and input  */
+.js-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.js-todo-input {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #333;
+    border-radius: 5px;
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+
+
+.todo-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    margin-bottom: 10px;
+}
+
+.done span {
+    text-decoration: line-through;
+}
+
+.todo-item span {
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: 22px;
+}
+
+.todo-item input {
+    display: none;
+}
+
+.tick {
+    border-radius: 50%;
+    border: 3px solid #333;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.tick::before {
+    content: '✓';
+    font-size: 20px;
+    display: none;
+}
+
+.done .tick::before {
+    display: inline;
+}
+
+.js-delete-todo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ff0000;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-todo i {
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
 }
